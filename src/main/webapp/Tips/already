@@ -1,0 +1,1 @@
+<script>alert('用户已经注册，请换一个账号注册或者去登录账号！！！');window.location='Register.html';</script>

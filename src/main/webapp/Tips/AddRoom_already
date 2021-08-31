@@ -1,0 +1,1 @@
+<script>alert('抱歉，您输入的房间号已经存在！！');window.location='/add.do';</script>

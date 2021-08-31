@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小区物业管理系统</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/Register.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+</head>
+<body>
+<div class="big-box">
+    <div class="register">
+        <div class="font">请注册</div>
+    </div>
+    <div class="info">
+        <form action="register.do" method="get" onsubmit="return validate()">
+            <div class="input" style="top: 20px"><i class="fa fa-user-o" aria-hidden="true"></i>:<input type="text" placeholder="请输入用户名" id="Account" name="Username"> </div>
+            <div class="input" style="top: 40px"><i class="fa fa-lock" aria-hidden="true"></i>:<input type="password" placeholder="请输入密码" id="Password" name="Password"> </div>
+            <div class="input" style="top: 60px"><i class="fa fa-lock" aria-hidden="true"></i>:<input type="password" placeholder="请确认密码" id="CPassword" name="CPassword"> </div>
+            <div class="input" style="top: 80px"><i class="fa fa-phone" aria-hidden="true"></i>:<input type="text" placeholder="请输入联系电话"id="Phone" name="Phone"> </div>
+            <div class="input" style="top: 100px"><i class="fa fa-envelope-o fa-fw"></i>:<input type="text" placeholder="请输入邮箱" id="Email" name="Email"> </div>
+            <div class="input-b" style="top: 120px"><button type="submit">登录</button> </div>
+            <div class="input-b" style="top: 140px">
+                <p align="center" style="top: 80px;font-size: 15px;" >
+                    已经有账号？<a href="Login.html">10秒钟快速登录</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    function validate() {
+        var email = document.getElementById("Email");
+        var password = document.getElementById("Password");
+        var Cpassword= document.getElementById("CPassword");
+        var account = document.getElementById("Account");
+        if (account.value==""){
+            alert("请输入用户名！");
+            return false;
+        }
+        //验证密码
+        if (password.value == "") {
+            alert("密码不能为空！");
+            return false;
+        }else if (password.value.length<6||password.value.length>12){
+            alert("密码长度为6-12位");
+            return false;
+        }
+        //验证确认密码
+        if(Cpassword.value==""){
+            alert("请输入确认密码！");
+            return false;
+        }else if (Cpassword.value!=password.value){
+            alert("两次密码不一致，请重新输入！");
+            return false;
+        }
+
+        //验证邮箱合法性
+        var pattern = /^([a-zA-Z0-9_-])(\w|\-)+@([a-zA-Z0-9])+\.([a-zA-Z]{2,4})$/;
+        if (email.value==""){
+
+        }else if (!pattern.test(email.value)) {
+            alert("邮箱格式不正确！");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
+</body>
+</html>

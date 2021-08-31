@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 管理系统大布局 - Layui</title>
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style type="text/css">
+       .myfont{
+           font-size: 18px;
+           font-family: 华文新魏;
+       }
+    </style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" >
+        <div class="layui-logo layui-hide-xs layui-bg-black"><span style="color: #00F7DE;font-size: 25px;font-family: 华文新魏">物业管理平台</span></div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left" >
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </li>
+            <!--<li class="layui-nav-item layui-hide-xs"><a href="">欢迎</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>-->
+        </ul>
+        <!--右侧头像基本信息-->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                <a href="javascript:;">
+                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+                    tester
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">Your Profile</a></dd>
+                    <dd><a href="">Settings</a></dd>
+                    <dd><a href="">Sign out</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="/show.do"><span class="myfont"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;业主信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="building.html" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;栋楼信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="room.html" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;房间信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="index.jsp" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;房号绑定</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="index.jsp" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;车位信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="index.jsp" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;缴费信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="index.jsp" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;报修管理</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="index.jsp" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;投诉信息</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 0px;">
+            <iframe id="pframe" name="pframe" scrolling="no"  frameborder="0"  width="100%" onload="dyniframesize()"> </iframe>
+        </div>
+    </div>
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <i class="fa fa-at" aria-hidden="true"></i>&nbsp;物业管理平台
+    </div>
+</div>
+<script src="js/layui.js">
+</script>
+<!--iframe自动适应窗口大小-->
+<script>
+    //定义变量，存储iframe的ID列表
+    var iframeids=["pframe"];
+    //判断浏览器是否支持iframe,yes支持,no则不支持
+    var iframehide="yes";
+
+    function dyniframesize()
+    {
+        var dyniframe=new Array();
+
+        for(var i=0;i<iframeids.length;i++)
+        {
+            if(document.getElementById)
+            {
+                //自动调整iframe高度
+                dyniframe[dyniframe.length]=document.getElementById(iframeids[i]);
+                if(dyniframe[i] && !window.opera)
+                {
+                    dyniframe[i].style.display="block";
+                    if(dyniframe[i].contentDocument && dyniframe[i].contentDocument.body.offsetHeight) //如果用户的浏览器是NetScape
+                        dyniframe[i].height=dyniframe[i].contentDocument.body.offsetHeight;
+                    else if(dyniframe[i].Document && dyniframe[i].Document.body.scrollHeight)  //如果用户的浏览器是IE
+                        dyniframe[i].height=dyniframe[i].Document.body.scrollHeight;
+                }
+            }
+            //根据设定的参数来处理不支持iframe的浏览器的显示问题
+            if((document.all || document.getElementById) && iframehide=="no")
+            {
+                var tempobj=document.all? document.all[iframeids[i]] : document.getElementById(iframeids[i]);
+                tempobj.style.display="block" ;
+            }
+        }
+    }
+    if (window.addEventListener)
+        window.addEventListener("load", dyniframesize, false)
+    else if (window.attachEvent)
+        window.attachEvent("onload", dyniframesize)
+    else
+        window.onload=dyniframesize
+</script>
+</body>
+</html>

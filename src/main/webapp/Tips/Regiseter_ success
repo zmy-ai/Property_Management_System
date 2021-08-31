@@ -1,0 +1,1 @@
+<script>alert('恭喜你，注册成功！');window.location='Login.html';</script>

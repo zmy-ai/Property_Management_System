@@ -1,0 +1,1 @@
+<script>alert('用户已经添加过了！');window.location='addUser.jsp';</script>

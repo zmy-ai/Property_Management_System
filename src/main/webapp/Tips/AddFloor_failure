@@ -1,0 +1,1 @@
+<script>alert('该栋楼已经添加过了！');window.location='addFloor.jsp';</script>

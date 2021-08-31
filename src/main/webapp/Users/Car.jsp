@@ -1,0 +1,192 @@
+<%--
+Created by IntelliJ IDEA.
+User: 明艳
+Date: 2021/8/23
+Time: 20:30
+To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page isELIgnored="false" %>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 管理系统大布局 - Layui</title>
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style type="text/css">
+        body{
+            font-family: 华文新魏;
+        }
+        .myfont{
+            font-size: 24px;
+            font-family: 华文新魏;
+        }
+        .page-top{
+            width: 100%;
+            height: 30px;
+            background-color: #ECF0F5;
+        }
+        .big{
+            width: 80%;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        table{
+            margin-top: 10px;
+            border-color: #fff9ec;
+        }
+        table tr{
+            height: 45px;
+        }
+        table tr td,th{
+            border-color: #E7E7E7;
+            font-size: 50px;
+        }
+        table tr td{
+            text-align: center;
+
+        }
+
+        .layui-btn {
+            font-size: 20px;
+        }
+        .layui-table thead tr th{
+            font-size:20px ;
+            text-align: center;
+        }
+        .layui-table tbody tr td{
+            font-size:20px ;
+        }
+        .layui-table tbody tr td a{
+            margin-left: 4px;
+            border: none;
+            width: 180px;
+            height: 60px;
+            color: #FFFFFF;
+            padding: 10px;
+        }
+        .layui-table tbody tr td a:nth-child(1){
+            background: #009688;
+        }
+        .layui-table tbody tr td a:nth-child(2){
+            background: #FF5722;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" >
+        <div class="layui-logo layui-hide-xs layui-bg-black"><span style="color: #00F7DE;font-size: 25px;font-family: 华文新魏">物业管理平台</span></div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left" >
+            <!-- 移动端显示 -->
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+                <i class="layui-icon layui-icon-spread-left"></i>
+            </li>
+            <!--<li class="layui-nav-item layui-hide-xs"><a href="">欢迎</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>-->
+        </ul>
+        <!--右侧头像基本信息-->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                <a href="javascript:;">
+                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+                    ${user_account.username}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">个人信息</a></dd>
+                    <dd><a href="">Settings</a></dd>
+                    <dd><a href="">对出登录</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="/User_Floorshow.do?id=${user_account.id}" ><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;房产信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed" style="background-color: #009688">
+                    <a class="" href="/User_Carshow.do?id=${user_account.id}"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;车位信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="/User_showPay.do?id=${user_account.id}" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;缴费信息</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="/User_maintain.do?id=${user_account.id}" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;报修管理</span></a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="/User_Complain.do?id=${user_account.id}" target="pframe"><span class="myfont"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;投诉信息</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 0px;">
+            <div class="page-top">
+                <span style="color: #777777;font-size: 18px;font-family: 华文新魏;margin: 0 auto;"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;首页&nbsp;&gt;业主信息</span>
+            </div>
+            <div class="big"  >
+                <script type="text/javascript">
+                    function addCar(){
+                        document.Fname.action = "${pageContext.request.contextPath }/addcar.do";
+                        document.Fname.submit();
+                    }
+                </script>
+                <div class="layui-btn-group demoTable">
+                    <button class="layui-btn" data-type="isAll">添加</button>
+                </div>
+                <form action="" method="get" name="Fname">
+                <table class="layui-table" lay-data="{width: 1236, height:800, page:true}">
+                    <thead>
+                    <tr>
+                        <th lay-data="{field:'src', width:117}">批量操作</th>
+                        <th lay-data="{field:'car_id', width:170, sort: true}">车位号</th>
+                        <th lay-data="{field:'type', width:200,sort: true}">类型</th>
+                        <th lay-data="{field:'car_rea', width:100, sort: true}">面积</th>
+                        <th lay-data="{field:'createtime', width:230}">创建时间</th>
+                        <th lay-data="{field:'outTime', width:230, sort: true}">截止日期</th>
+                        <th lay-data="{field:'abc', width:180}">操作</th>
+                    </tr>
+                    </thead>
+                        <tbody>
+                        <c:forEach items="${list}" var="car">
+                            <tr>
+                                <td><input type="checkbox" value="${car.id }" name="chick"></td>
+                                <td>${car.car_id}</td>
+                                <td>${car.type}</td>
+                                <td>${car.car_area}</td>
+                                <td>${car.createtime}</td>
+                                <td>${car.outTime}</td>
+                                <td><a href="/DetailCar.do?id=${car.id}">详情</a></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                </table>
+                </form>
+                <script src="js/layui.js" charset="utf-8"></script>
+                <!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+            </div>
+        </div>
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            <i class="fa fa-at" aria-hidden="true"></i>&nbsp;物业管理平台
+        </div>
+    </div>
+</div>
+</body>
+</html>

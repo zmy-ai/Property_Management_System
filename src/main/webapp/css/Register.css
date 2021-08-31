@@ -1,0 +1,67 @@
+body{
+	background: url(../img/background3.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+.big-box{
+	background-color: #FFFFFF;
+	width:400px ;
+	height: 450px;
+	margin-top: 8%;
+	margin-left:38% ;
+	border-radius: 10px;
+}
+.big-box .register{
+	position:relative;
+	width: 300px;
+	height: 45px;
+	margin: 0 auto;
+	border-bottom:#74AFF7 solid 1px;
+}
+.big-box .register .font{
+	position: relative;
+	width: 20%;
+	margin:0 auto;
+	top: 20px;
+	color: #38A8FD;
+	text-align: center;
+}
+.big-box .info{
+	position: relative;
+	height:70%;
+	*border: #1E9FFF solid 2px;
+}
+.big-box .info .input{
+	position: relative;
+	border: solid #E6E6E6 1px;
+	height: 35px;
+	width: 70%;
+	border-radius: 10px;
+	margin:0 auto;
+	color: #757575;
+	font-size: 18px;
+}
+.big-box .info .input-b{
+	position: relative;
+	height: 35px;
+	width: 70%;
+	border-radius: 10px;
+	margin:0 auto;
+	color: #757575;
+	font-size: 18px;
+}
+.big-box .info .input input{
+	position: relative;
+	border: none;
+	height: 30px;
+
+}
+.big-box .info .input-b button{
+	position: relative;
+	background: #247FF2;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 10px;
+	height: 35px;
+	width: 100%;
+}
